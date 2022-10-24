@@ -1,11 +1,8 @@
-from asyncore import dispatcher_with_send
-from cgitb import small
 from enum import Enum
-import imp
+
 from typing import List
 from uuid import UUID
-from click import progressbar
-from numpy import size
+
 
 from pydantic import BaseModel,Field
 
@@ -24,7 +21,7 @@ class StatusEnum(str, Enum):
 class OrderItemSchema(BaseModel):
     product: str
     size: SizeEnum
-    quantity: int = Field(default="1", ge="1")
+    quantity: int = Field(default=1, ge=1, example=2)
 
 class CreateOrderSchema(BaseModel):
     order:List[OrderItemSchema]
